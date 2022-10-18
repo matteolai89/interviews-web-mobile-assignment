@@ -1,15 +1,25 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+// import firebase from "firebase";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCTWb8p8AKCBkhcbqVLPa6ETSxDdZAvtN4",
-  authDomain: "xtream-project-ccf49.firebaseapp.com",
-  projectId: "xtream-project-ccf49",
-  storageBucket: "xtream-project-ccf49.appspot.com",
-  messagingSenderId: "665477820657",
-  appId: "1:665477820657:web:e341d26b2e1fb9e38a3950",
+  apiKey: "AIzaSyCm0feA1PEWpkd_c0bDARXE8PshTv3X9GM",
+  authDomain: "xtream-database.firebaseapp.com",
+  databaseURL: "https://xtream-database-default-rtdb.firebaseio.com",
+  projectId: "xtream-database",
+  storageBucket: "xtream-database.appspot.com",
+  messagingSenderId: "270436781223",
+  appId: "1:270436781223:web:7e5b1c46f9544f89f0df82",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 export const db = getDatabase(app);
+
+// firebase.initializeApp(firebaseConfig);
+
+// export default firebase;
