@@ -9,21 +9,19 @@ const AddPost = ({ onAddPost }) => {
   };
 
   return (
-    <>
-      <form onSubmit={onSubmitHandler} className={classes.form}>
-        <div className={classes["form-container"]}>
-          <textarea
-            placeholder="Write Something"
-            name="body"
-            className={classes["input-post"]}
-            required
-          ></textarea>
-          <button className={classes["button-post"]} type="submit">
-            Post
-          </button>
-        </div>
-      </form>
-    </>
+    <form onSubmit={onSubmitHandler} className={classes.form}>
+      <div className={classes["form-container"]}>
+        <textarea
+          placeholder="Write a post"
+          name="body"
+          className={classes["input-post"]}
+          required
+        ></textarea>
+        <button className={classes["button-post"]} type="submit">
+          Post
+        </button>
+      </div>
+    </form>
   );
 };
 

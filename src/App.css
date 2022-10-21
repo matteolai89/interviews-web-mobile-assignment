@@ -3,7 +3,41 @@
   /* flex: 1;
   padding: 0 20rem;
   display: flex; */
+}
+
+.header-container {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #d5c323, #d523cf);
+  background-size: 400% 400%;
+  animation: gradient 35s ease infinite;
+}
+
+.header-container h1 {
+  color: white;
+  font-weight: 300;
+  margin-top: 30px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.divider {
+  border-bottom: 3px solid rgb(226, 226, 226);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4%;
 }

@@ -1,90 +1,119 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./PostLayout.module.css";
 
 const Post = ({ body, id, onEdit, onDeletePost }) => {
   const [isEdit, setIsEdit] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const [comments, setComments] = useState([]);
 
   const editHandler = () => {
     setIsEdit(!isEdit);
   };
-  //   const handleEdit = () => {
-  //     setIsEdit(!isEdit);
-  //   };
+  const commentsHandler = () => {
+    setShowComments(true);
+    onShowComments(id);
+  };
+
+  const hideCommentsHandler = () => {
+    setShowComments(false);
+  };
 
   const saveEditHandler = (e) => {
     e.preventDefault();
-    // console.log(e.target.body.value);
+
     onEdit(id, e.target.body.value);
     setIsEdit(!isEdit);
   };
-
-  //   const handleOnEditSubmit = (evt) => {
-  //     evt.preventDefault();
-  //     console.log(evt.target.body.value);
-  //     onEdit(id, evt.target.body.value);
-  //     setIsEdit(!isEdit);
-  //   };
 
   const deleteHandler = () => {
     onDeletePost(id);
   };
 
+  const onShowComments = async (id) => {
+    await fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+      .then((response) => response.json())
+      .then((data) => {
+        setComments((comments) => [...data]);
+      });
+    console.log(comments);
+  };
+
   return (
-    <div>
+    <div className={classes["post-container"]}>
       {isEdit ? (
-        <form onSubmit={saveEditHandler} className={classes.form}>
-          <div className={classes["form-container"]}>
-            <input
-              placeholder="Post"
-              name="body"
-              defaultValue={body}
-              className={classes["input-post"]}
-            />
-            <button
-              onSubmit={saveEditHandler}
-              className={classes["button-post"]}
-            >
-              Save
-            </button>
-            <button onSubmit={!editHandler} className={classes["button-post"]}>
-              Cancel
-            </button>
-          </div>
-        </form>
+        <div className={classes["edit-form-container"]}>
+          <form onSubmit={saveEditHandler} className={classes.form}>
+            <div className={classes["form-container"]}>
+              <textarea
+                placeholder="Post"
+                name="body"
+                defaultValue={body}
+                className={classes["input-post"]}
+              />
+              <button
+                onSubmit={saveEditHandler}
+                className={classes["button-save"]}
+              >
+                Save
+              </button>
+              <button
+                onSubmit={!editHandler}
+                className={classes["button-cancel"]}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       ) : (
         <div className={classes["post-layout"]}>
-          <div className={classes["body-container"]}>
-            <p>{body}</p>
-          </div>
-          <div className={classes["footer-container"]}>
-            <button className={classes["button-post"]} onClick={editHandler}>
-              edit
-            </button>
-            <button className={classes["button-post"]} onClick={deleteHandler}>
-              delete
-            </button>
+          <div className={classes["list-layout"]}>
+            <div className={classes["body-container"]}>
+              <p>{body}</p>
+            </div>
+            <div className={classes["footer-container"]}>
+              {!showComments && (
+                <button
+                  className={classes["button-show-comments"]}
+                  onClick={commentsHandler}
+                >
+                  Show Comments
+                </button>
+              )}
+              {showComments && (
+                <button
+                  className={classes["button-hide-comments"]}
+                  onClick={hideCommentsHandler}
+                >
+                  Hide Comments
+                </button>
+              )}
+              <div className={classes.space}></div>
+
+              <button className={classes["button-edit"]} onClick={editHandler}>
+                Edit
+              </button>
+              <button
+                className={classes["button-delete"]}
+                onClick={deleteHandler}
+              >
+                Delete
+              </button>
+            </div>
+
+            {showComments && (
+              <div className={classes["comments-layout"]}>
+                {comments.map((comment) => (
+                  <div className={classes["comments-container"]}>
+                    <p>{comment.body}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}
     </div>
-    // <div>
-    //   {isEdit ? (
-    //     <form onSubmit={handleOnEditSubmit}>
-    //       <input placeholder="Name" name="body" defaultValue={body} />
-    //       {/* <input placeholder="Email" name="email" defaultValue={email} /> */}
-    //       <button onSubmit={handleOnEditSubmit}>Save</button>
-    //     </form>
-    //   ) : (
-    //     <div className="user">
-    //       <span className="user-name">{body}</span>
-    //       {/* <span className="user-email">{email}</span> */}
-    //       <div>
-    //         <button onClick={handleEdit}>Edit</button>
-    //         <button onClick={deleteHandler}>Delete</button>
-    //       </div>
-    //     </div>
-    //   )}
-    // </div>
   );
 };
 

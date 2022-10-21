@@ -30,7 +30,7 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setPosts((posts) => [...posts, data]);
+        setPosts((posts) => [data, ...posts]);
       });
   };
 
@@ -71,25 +71,25 @@ function App() {
     });
   };
 
-  console.log(posts);
   return (
-    <>
-      <div className="app">
-        <h1>Xtream Posts Project</h1>
+    <div className="app">
+      <div className="header-container">
+        <h1>XTREAM POST PROJECT</h1>
         <AddPost onAddPost={onAddPost} />
-        <div>
-          {posts.map((post) => (
-            <Post
-              id={post.id}
-              key={post.id}
-              body={post.body}
-              onDeletePost={onDeletePost}
-              onEdit={onEdit}
-            />
-          ))}
-        </div>
       </div>
-    </>
+
+      <div className="posts-container">
+        {posts.map((post) => (
+          <Post
+            id={post.id}
+            key={post.id}
+            body={post.body}
+            onDeletePost={onDeletePost}
+            onEdit={onEdit}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
