@@ -49,8 +49,8 @@
   border-radius: 25px;
   padding: 2%;
   margin-bottom: 20px;
-  background-color: rgba(221, 221, 221, 0.109);
-  box-shadow: rgba(0, 0, 0, 0.208) 2px 2px 4px;
+  background-color: #dddddd1c;
+  box-shadow: #00000035 2px 2px 4px;
 }
 .comments-layout {
   border-radius: 25px;
@@ -64,7 +64,7 @@
   margin: 2%;
   border-radius: 25px;
   padding: 2%;
-  background-color: rgba(221, 221, 221, 0.21);
+  background-color: #dddddd36;
   max-width: 700px;
 }
 .comments-container p {
@@ -98,14 +98,14 @@
 }
 
 .button-show-comments {
-  background-color: rgba(255, 248, 125, 0.534);
+  background-color: #fff87d88;
 }
 .button-hide-comments {
   background-color: rgba(255, 236, 127, 0.701);
 }
 
 .button-delete {
-  background-color: rgba(255, 128, 128, 0.703);
+  background-color: #ff8080b3;
 }
 .button-show-comments:hover {
   background-color: rgba(255, 249, 143, 0.849);
@@ -119,7 +119,7 @@
 }
 
 .button-edit {
-  background-color: rgba(128, 128, 128, 0.129);
+  background-color: #80808021;
 }
 .button-edit:hover {
   background-color: rgba(128, 128, 128, 0.247);

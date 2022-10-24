@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import classes from "./PostLayout.module.css";
+import React, { useState } from "react";
+import classes from "./Post.module.css";
 
 const Post = ({ body, id, onEdit, onDeletePost }) => {
   const [isEdit, setIsEdit] = useState(false);
