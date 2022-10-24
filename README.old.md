@@ -104,3 +104,11 @@ The requirements for this challenge are the exact same requirements of the Front
 
 🤓 -> https://images.app.goo.gl/Xwot1SkFmRobZMRq9
 ...
+
+1. The project was built with React.js
+
+2. You can run the project by installing the dependecies with npm install
+
+3. Then npm start
+
+4. Enjoy! :)
